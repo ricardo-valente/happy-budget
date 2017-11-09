@@ -1,0 +1,21 @@
+{
+  "name": "happy-budget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricardo-valente/happy-budget.git"
+  },
+  "author": "Ricardo Valente",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ricardo-valente/happy-budget/issues"
+  },
+  "homepage": "https://github.com/ricardo-valente/happy-budget#readme"
+}
