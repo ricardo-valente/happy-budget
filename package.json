@@ -19,6 +19,10 @@
     "build": "babel lib -d dist",
     "serve": "node dist/index.js"
   },
+  "babel": {
+    "presets": ["es2015", "stage-2"],
+    "plugins": []
+  }
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ricardo-valente/happy-budget.git"
