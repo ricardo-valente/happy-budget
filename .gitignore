@@ -1,4 +1,6 @@
 /node_modules
-npm-debug.log
 .DS_Store
+*.log
+npm-debug.log*
 /*.env
+package_backup.json
