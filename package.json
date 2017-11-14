@@ -41,7 +41,7 @@
     "run:server": "babel-node app/server.js",
     "browser-sync": "browser-sync start reload --server './app' --port 5000 --ui-port 5001 --files 'app/**/*.html, app/css/**/*.css, app/js/**/*.js' --browser 'google chrome'",
     "serve:dev": "run-p run:server browser-sync",
-    "serve:prod": "babel-node public/server.js",
+    "serve:prod": "node public/server.js",
     "serve": "run-s serve:dev",
     "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '&gt; 5%, ie 9' -r app/css/*",
     "concat": "concat-cli -f dev/js/**/*.js -o dev/js/main.js",
