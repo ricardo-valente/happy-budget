@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.16.2",
+    "pg": "^7.4.0"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "babel-cli": "^6.26.0",
@@ -40,7 +43,7 @@
     "clean": "rimraf ./{app/css,app/js,public}",
     "mkdir": "mkdirp app/{views,css,js,images/icons,fonts} public/{views,css,js,images/icons,fonts}",
     "run:server": "babel-node app/server.js",
-    "browser-sync": "browser-sync start reload --server './app' --port 5000 --ui-port 5001 --files 'app/**/*.html, app/css/**/*.css, app/js/**/*.js' --browser 'google chrome'",
+    "browser-sync": "browser-sync start reload --server './app/' --port 5000 --ui-port 5001 --files 'app/**/*.html, app/css/**/*.css, app/**/*.js' --browser 'google chrome'",
     "serve:dev": "run-p run:server browser-sync",
     "serve:prod": "node public/server.js",
     "serve": "if-env NODE_ENV=production && run-s serve:prod || run-s serve:dev",
@@ -70,7 +73,7 @@
     "watch:js": "onchange 'dev/js/main.js' -- run-s build:js",
     "watch": "run-p serve watch:*",
     "start": "run-s build watch",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master && heroku logs --tail"
   },
   "repository": {
     "type": "git",
