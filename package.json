@@ -47,7 +47,7 @@
     "browser-sync": "browser-sync start reload --server './app/' --port 5000 --ui-port 5001 --files 'app/**/*.html, app/css/**/*.css, app/**/*.js' --browser 'google chrome'",
     "serve:dev": "run-p run:server browser-sync",
     "serve:prod": "node public/server.js",
-    "serve": "if [[ ${NODE_ENV} == 'production' ]]; then run-s serve:prod; else run-s serve:dev; fi",
+    "serve": "run-s serve:prod || run-s serve:dev",
     "autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '&gt; 5%, ie 9' -r app/css/*",
     "concat": "concat-cli -f dev/js/**/*.js -o dev/js/main.js",
     "imagemin": "imagemin app/images/* -o public/images",
@@ -72,7 +72,7 @@
     "watch:scss": "onchange 'dev/scss/main.scss' -- run-s build:css",
     "watch:images": "onchange 'app/images' -- run-s build:images",
     "watch:js": "onchange 'dev/js/main.js' -- run-s build:js",
-    "watch": "run-p serve watch:*",
+    "watch": "run-p serve:dev watch:*",
     "start": "run-s build watch",
     "deploy": "git push heroku master && heroku logs --tail",
     "log": "heroku logs --tail"
