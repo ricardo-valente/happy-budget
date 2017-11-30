@@ -1,9 +1,9 @@
-import dotenv from 'dotenv'
-import dotenvParseVariables from 'dotenv-parse-variables'
-let env = dotenv.config({});
-if (env.error) throw env.error;
-env = dotenvParseVariables(env.parsed);
-module.exports = env;
+// import dotenv from 'dotenv'
+// import dotenvParseVariables from 'dotenv-parse-variables'
+// let env = dotenv.config({});
+// if (env.error) throw env.error;
+// env = dotenvParseVariables(env.parsed);
+// module.exports = env;
 
 const appVars = {
   title: 'Happy Budget',
