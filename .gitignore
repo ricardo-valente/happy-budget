@@ -4,3 +4,5 @@
 npm-debug.log*
 /*.env
 package_backup.json
+.eslintrc.yml
+.stylelintrc
