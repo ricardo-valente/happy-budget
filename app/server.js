@@ -1,5 +1,9 @@
 'use strict';
 
+var _config = require('../config');
+
+var _config2 = _interopRequireDefault(_config);
+
 var _http = require('http');
 
 var _http2 = _interopRequireDefault(_http);
@@ -20,10 +24,6 @@ var _expressHandlebars = require('express-handlebars');
 
 var _expressHandlebars2 = _interopRequireDefault(_expressHandlebars);
 
-var _config = require('../config');
-
-var _config2 = _interopRequireDefault(_config);
-
 var _helpers = require('./lib/helpers');
 
 var _helpers2 = _interopRequireDefault(_helpers);
@@ -34,7 +34,7 @@ var _require = require('pg'),
     Pool = _require.Pool,
     Client = _require.Client;
 
-// console.log(env);
+var dbConnectionStr = 'postgresql://' + _config2.default.db.user + ':' + _config2.default.db.password + '@' + _config2.default.db.host + ':' + _config2.default.db.port + '/' + _config2.default.db.name;
 
 var app = (0, _express2.default)();
 var port = 5000;
@@ -47,6 +47,26 @@ var hbsOpt = _expressHandlebars2.default.create({
   partialsDir: _path2.default.join(__dirname, 'views/partials'),
   helpers: _helpers2.default
 });
+var db = _config2.default.db;
+var pool = new Pool({
+  connectionString: dbConnectionStr
+});
+// pool.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//   pool.end()
+// })
+var client = new Client({
+  connectionString: dbConnectionStr
+});
+client.connect();
+
+pool.query('SELECT * FROM income WHERE id = $1', [1], function (err, res) {
+  if (err) {
+    throw err;
+  }
+  console.log('user:', res.rows[0]);
+});
+
 app.engine('hbs', hbsOpt.engine);
 app.set('views', _path2.default.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

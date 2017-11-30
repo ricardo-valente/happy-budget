@@ -1,17 +1,17 @@
 import express from 'express'
-import config from '../../config'
+const appVars = require('../../config').appVars
 
 const router = express.Router();
 router.get('/', (req, res, next) => {
   res.render('index', {
-    title: config.title,
-    author: config.author,
-    income_fields: config.income_fields
+    title: appVars.title,
+    author: appVars.author,
+    income_fields: appVars.income_fields
   });
 });
 
 router.post('/submit', function(req, res, next) {
-  
+
   res.redirect('/');
 });
 

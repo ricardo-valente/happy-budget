@@ -1,9 +1,12 @@
 import express from 'express'
-import env from '../../config'
+const appVars = require('../../config').appVars
 
 const router = express.Router();
 router.get('/', (req, res, next) => {
-  res.render('index')
+  res.render('index', {
+    title: appVars.title,
+    author: appVars.author
+  })
 });
 
 module.exports = router;

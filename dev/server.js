@@ -1,13 +1,12 @@
+import config from '../config'
 import http from 'http'
 import fs from 'fs'
 import path from 'path'
 import express from 'express'
 import hbs from 'express-handlebars'
-import env from '../config'
 import helpers from './lib/helpers'
 const { Pool, Client } = require('pg')
-
-// console.log(env);
+const dbConnectionStr = 'postgresql://' + config.db.user + ':' + config.db.password + '@' + config.db.host + ':' + config.db.port + '/' + config.db.name
 
 const app = express()
 const port = 5000
@@ -20,6 +19,26 @@ const hbsOpt = hbs.create({
   partialsDir: path.join(__dirname, 'views/partials'),
   helpers: helpers
 })
+const db = config.db
+const pool = new Pool({
+  connectionString: dbConnectionStr,
+})
+// pool.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//   pool.end()
+// })
+const client = new Client({
+  connectionString: dbConnectionStr,
+})
+client.connect()
+
+pool.query('SELECT * FROM income WHERE id = $1', [1], (err, res) => {
+  if (err) {
+    throw err
+  }
+  console.log('user:', res.rows[0])
+})
+
 app.engine('hbs', hbsOpt.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

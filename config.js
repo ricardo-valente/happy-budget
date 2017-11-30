@@ -1,11 +1,14 @@
-// import dotenv from 'dotenv'
-// import dotenvParseVariables from 'dotenv-parse-variables'
-// let env = dotenv.config({});
-// if (env.error) throw env.error;
-// env = dotenvParseVariables(env.parsed);
-// module.exports = env;
+const dotenv = require('dotenv').config()
 
-const appVars = {
+exports.db = {
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  name: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT
+}
+
+exports.appVars = {
   title: 'Happy Budget',
   author: 'Ricardo Valente',
   income_fields: {
@@ -44,49 +47,3 @@ const appVars = {
     'Category': ['Grocery', 'Shopping', 'Restaurant', 'Vacation', 'Transport', 'Home', 'Others']
   }
 }
-module.exports = appVars;
-// require('dotenv').config();
-// const convict = require('convict');
-//
-// const config = convict({
-//   env: {
-//     doc: 'App Environment',
-//     format: ['prod', 'dev', 'qa'],
-//     default: 'prod',
-//     arg: 'appEnv',
-//     env: 'NODE_ENV'
-//   },
-//   db: {
-//     doc: 'App Database Config',
-//
-//   },
-//   app: {
-//     name: {
-//       doc: 'App Name',
-//       format: String,
-//       default: 'Happy Budget',
-//       arg: 'app_name',
-//       env: 'APP_NAME'
-//     },
-//     author: {
-//       format: String,
-//       default: 'Ricardo Valente',
-//       arg: 'author',
-//       env: 'APP_AUTHOR'
-//     }
-//     // main_views: {
-//     //   doc: 'App Main Screen Views',
-//     //   format: ['Balances', 'New Entry', 'Settings'],
-//     //   default: 'Balances',
-//     //   arg: 'main_views',
-//     //   env: 'APP_VIEWS'
-//     // }
-//   }
-// });
-//
-// const env = config.get('env');
-// // config.loadFile(`./config/${env}.json`);
-//
-// config.validate({ allowed: 'strict' }); // throws error if config does not conform to schema
-//
-// module.exports = config.getProperties(); // so we can operate with a plain old JavaScript object and abstract away convict (optional)
