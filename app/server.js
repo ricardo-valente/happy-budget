@@ -33,8 +33,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _require = require('pg'),
     Pool = _require.Pool,
     Client = _require.Client;
-
-var dbConnectionStr = 'postgresql://' + _config2.default.db.user + ':' + _config2.default.db.password + '@' + _config2.default.db.host + ':5432/' + _config2.default.db.name;
+// const dbConnectionStr = 'postgresql://' + config.db.user + ':' + config.db.password + '@' + config.db.host + ':5432/' + config.db.name
 
 var app = (0, _express2.default)();
 var port = 5000;
@@ -49,14 +48,14 @@ var hbsOpt = _expressHandlebars2.default.create({
 });
 var db = _config2.default.db;
 var pool = new Pool({
-  connectionString: dbConnectionStr
+  connectionString: _config2.default.databaseUrl
 });
 // pool.query('SELECT NOW()', (err, res) => {
 //   console.log(err, res)
 //   pool.end()
 // })
 var client = new Client({
-  connectionString: dbConnectionStr
+  connectionString: _config2.default.databaseUrl
 });
 client.connect();
 

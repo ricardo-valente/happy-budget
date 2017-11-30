@@ -7,7 +7,7 @@ exports.db = {
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT
 }
-
+exports.databaseUrl = process.env.DATABASE_URL
 
 exports.appVars = {
   title: 'Happy Budget',
