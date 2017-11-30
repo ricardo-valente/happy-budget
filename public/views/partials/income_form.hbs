@@ -1,0 +1,46 @@
+<form class="app__form income__form" target="_self" action="/submit" method="post" autocapitalize="words">
+  <div class="row form__fields">
+    {{#each income_fields }}
+      <div class="field__wrapper {{ lowify @key }}__field">
+        {{#ifEqual this.type 'select' }}
+          <{{ ../this.type }} class="field__input {{ lowify @key }}__input" name="{{ lowify @key }}" placeholder="{{ @key }}" required>
+            {{#each ../this.options as |val key| }}
+              <option value="{{ lowify val }}">{{ val }}</option>
+            {{/each}}
+          </{{ ../this.type }}>
+        {{ else }}
+          {{#ifEqual ../this.type 'number' }}
+            <input class="field__input {{ lowify @key }}__input" type="{{ ../this.type  }}" name="{{ lowify @key }}" value="0.5" step="0.5" min="0.5" valueAsNumber required>
+            <span class="required">
+              <h6 class="required__text">No amount</h6>
+            </span>
+          {{ else }}
+            <input class="field__input {{ lowify @key }}__input" type="{{ ../this.type  }}" name="{{ lowify @key }}" placeholder="{{ @key }}" {{#ifNotEqual ../this.type 'checkbox' }}required{{/ifNotEqual}}>
+            {{#ifEqual ../this.type 'checkbox' }}
+              <label class="field__label">{{ @key }}</label>
+            {{/ifEqual }}
+          {{/ifEqual }}
+        {{/ifEqual }}
+        {{#ifEqual this.type 'text' }}
+          <span class="required">
+            <h6 class="required__text">Short word</h6>
+          </span>
+        {{/ifEqual }}
+      </div>
+    {{/each}}
+  </div>
+  <div class="row form__buttons">
+    <div class="button__wrapper save__field">
+      <button class="button save" type="submit" name="save">
+        <span class="button__icon check-icon"></span>
+        <span class="button__text">Save</span>
+      </button>
+    </div>
+    <div class="text-right button__wrapper cancel__field">
+      <button class="button cancel" type="button" name="cancel">
+        <span class="button__icon close-icon"></span>
+        <span class="button__text">Cancel</span>
+      </button>
+    </div>
+  </div>
+</form>

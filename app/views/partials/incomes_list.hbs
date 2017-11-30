@@ -1,0 +1,23 @@
+{{# if success }}
+  <section>
+    <h2>Successful Validation!</h2>
+  </section>
+{{ else }}
+  {{# if errors }}
+    <section class="errors">
+      <ul>
+        {{# each errors }}
+          <li>{{ this.msg }}</li>
+        {{/each}}
+      </ul>
+    </section>
+  {{/if}}
+{{/if}}
+<ul class="incomes__list">
+  <li class="incomes__item">
+    <h4 class="incomes__title"></h4>
+    <h5 class="incomes__date"></h5>
+    <h5 class="incomes__value"></h5>
+    <button class="button edit-income" type="button" name="button">Edit Income</button>
+  </li>
+</ul>

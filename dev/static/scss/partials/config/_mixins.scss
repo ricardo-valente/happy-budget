@@ -1,0 +1,210 @@
+/**
+ * Responsive sizes stack
+ */
+@mixin mobile(
+  $value: 1,
+  $factor: 2,
+  $property: font-size,
+  $unit: em
+  ) {
+    @media (min-width: 0) {
+      #{$property}: ($value / $factor) * 1 + $unit;
+    }
+    @media (min-width: $xs) {
+      #{$property}: ($value / ($factor - .1)) * 1 + $unit;
+    }
+    @media (min-width: $sm) {
+      #{$property}: ($value / ($factor - .2)) * 1 + $unit;
+    }
+    @media (min-width: $md - 1) {
+      #{$property}: $value * 1 + $unit;
+    }
+}
+
+/**
+ * Font stack mixin
+ */
+@mixin font(
+  $family: $MAIN_FONT,
+  $size: $FONT_BASE_SIZE,
+  $weight: lighter,
+  $height: $LINE_HEIGHT,
+  $align: center,
+  $transform: none,
+  $color: 'primary',
+  $display: block )
+  {
+    font-family: $family;
+    font-size: em($size) + em;
+    font-weight: $weight;
+    line-height: $height;
+    text-align: $align;
+    text-transform: $transform;
+    color: color($color);
+    display: $display;
+}
+
+/**
+ * Flex stack mixin
+ */
+@mixin flex(
+  $align: center,
+  $justify: center,
+  $direction: row,
+  $wrap: nowrap,
+  $shrink: 0 )
+  {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    flex-shrink: $shrink;
+}
+
+/**
+ * Background Image stack mixin
+ */
+@mixin bg-image(
+  $color: 'background',
+  $img: '',
+  $position: center,
+  $size: cover,
+  $repeat: no-repeat )
+  {
+    color: color($color);
+    background-image: url($IMAGES_PATH + $img);
+    background-position: $position;
+    background-size: $size;
+    background-repeat: $repeat;
+}
+
+/**
+ * Position stack mixin
+ */
+@mixin elem(
+  $display: inline-block,
+  $width: auto,
+  $height: auto,
+  $padding: 0,
+  $margin: 0,
+  $bg-color: transparent,
+  $opacity: 1 )
+  {
+    display: $display;
+    width: $width;
+    height: $height;
+    margin: $margin;
+    padding: $padding;
+    background-color: $bg-color;
+    opacity: $opacity;
+}
+
+/**
+ * Position stack mixin
+ */
+@mixin position(
+  $position: absolute,
+  $top: 0,
+  $right: auto,
+  $bottom: auto,
+  $left: 0,
+  $index: 1 )
+  {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $index;
+}
+
+/**
+ * Transition stack mixin
+ */
+@mixin transition(
+  $delay: 0,
+  $duration: 250,
+  $property: all,
+  $easing: ease-in-out )
+  {
+    transition-delay: $delay + ms;
+    transition-duration: $duration + ms;
+    transition-property: $property;
+    transition-timing-function: $easing;
+}
+
+
+/**
+ * Animation stack mixin
+ */
+@mixin toggle-animation(
+  $from: 0,
+  $via: 50%,
+  $to: 100,
+  $property: opacity,
+  $value-from: 0,
+  $value-via: 1,
+  $value-to: 0 )
+  {
+    
+}
+
+/**
+ * Pseudo Element stack mixin
+ */
+@mixin pseudo(
+  $content: '',
+  $display: block )
+  {
+    content: $content;
+    display: $display;
+}
+
+/**
+ * Link Reset mixin
+ */
+@mixin reset-link() {
+  text-decoration: none;
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+}
+
+/**
+ * List Reset mixin
+ */
+@mixin reset-list() {
+  padding-left: 0;
+  li {
+    list-style: none;
+    list-style-type: none;
+  }
+}
+
+/**
+ * List Button mixin
+ */
+@mixin reset-button() {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
+/**
+ * Write classes from a list
+ */
+@mixin classes($props_list, $prop) {
+  @for $value from 1 through length($props_list) {
+    .#{nth($props_list, $value)} {
+      $prop: nth($props_list, $value);
+    }
+  }
+}

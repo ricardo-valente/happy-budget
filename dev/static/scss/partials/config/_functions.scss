@@ -1,0 +1,25 @@
+/**
+ * Convert pixels to em
+ */
+@function em($pixels) {
+  @return $pixels / $FONT_BASE_SIZE;
+}
+
+/**
+ * Return colors
+ */
+@function color($color: 'primary') {
+  @return map-get($app-colors, $color);
+}
+/**
+ * Return darken colors
+ */
+@function dark-color($color: 'primary', $tint: 20%) {
+  @return darken(map-get($app-colors, $color), $tint);
+}
+/**
+ * Return lighten colors
+ */
+@function light-color($color: 'primary', $tint: 20%) {
+  @return lighten(map-get($app-colors, $color), $tint);
+}

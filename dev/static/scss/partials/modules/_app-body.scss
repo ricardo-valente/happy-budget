@@ -1,0 +1,44 @@
+.app {
+  @include elem(block, 100vw, 100vh, 10vh 0, 0, color('background'));
+  position: relative;
+  overflow: hidden;
+  .app__content {
+    @include flex($justify: space-between, $direction: column);
+    transition: 500ms all ease-in-out 50ms;
+
+    .container {
+      text-align: center;
+      transition: 500ms all ease-in-out 50ms;
+      .app__sub-title,
+      .incomes__list,
+      .add-income {
+        transition: 500ms all ease-out 75ms;
+      }
+    }
+
+    &.js-move-left {
+      opacity: 0;
+      .container {
+        transform: translateX(-20vw);
+
+        .app__sub-title {
+          transform: translateX(5vw);
+        }
+        .incomes__list {
+          transform: translateX(10vw);
+        }
+        .add-income {
+          transform: translateX(12vw);
+        }
+      }
+    }
+  }
+  @media (min-width: $sm) {
+    .app__content {
+      padding: 10vh;
+      .container {
+        width: 500px;
+      }
+    }
+  }
+}

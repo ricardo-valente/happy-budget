@@ -1,0 +1,9 @@
+<nav class="main-nav">
+  <ul class="menu__list">
+    {{# each main_nav as |val key| }}
+      <li class="list__item item__{{ add @index 1 }} {{ lowify val }}">
+        <a class="item__link" href="/{{ slugify val }}">{{ upify val }}</a>
+      </li>
+    {{/each}}
+  </ul>
+</nav>

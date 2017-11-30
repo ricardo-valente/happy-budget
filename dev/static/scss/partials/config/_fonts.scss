@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,500,700');
+
+@font-face {
+  font-family: $ICON_FONT;
+  src:  url('#{$FONTS_PATH}icons/icomoon.eot?2usvt');
+  src:  url('#{$FONTS_PATH}icons/icomoon.eot?2usvt#iefix') format('embedded-opentype'),
+    url('#{$FONTS_PATH}icons/icomoon.ttf?2usvt') format('truetype'),
+    url('#{$FONTS_PATH}icons/icomoon.woff?2usvt') format('woff'),
+    url('#{$FONTS_PATH}icons/icomoon.svg?2usvt#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class$="-icon"], [class*="-icon"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  @include font($ICON_FONT, $H3, bolder, 1);
+  speak: none;
+  font-style: normal;
+  font-variant: normal;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.check-icon:before {
+  content: "\e900";
+}
+.close-icon:before {
+  content: "\e901";
+}

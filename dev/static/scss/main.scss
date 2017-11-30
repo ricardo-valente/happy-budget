@@ -1,0 +1,26 @@
+/* Vendor Libraries */
+@import
+  'vendor/bootstrap/grid',
+  'vendor/bourbon/bourbon',
+  'vendor/reset-css/_reset';
+
+/* Config Styles */
+@import
+  'partials/config/_variables',
+  'partials/config/_functions',
+  'partials/config/_mixins',
+  'partials/config/_fonts';
+
+/* Generic Styles */
+@import
+  'partials/generic/_animations',
+  'partials/generic/_generic',
+  'partials/generic/_classes';
+
+/* Modules Styles */
+@import
+  'partials/modules/_app-body',
+  'partials/modules/_main-nav',
+  'partials/modules/_buttons',
+  'partials/modules/_form-fields',
+  'partials/modules/_modal';

@@ -1,0 +1,11 @@
+@keyframes valid-input-field {
+  from {
+    border-color: color('false');
+  }
+  35% {
+    border-color: color('true');
+  }
+  to {
+    border-color: color('primary');
+  }
+}

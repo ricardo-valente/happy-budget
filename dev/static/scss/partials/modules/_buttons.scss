@@ -1,0 +1,32 @@
+/**
+ * Button styles
+ */
+.button {
+  @include elem($height:58px, $margin:0, $padding:10px 15px);
+  @include flex($direction:row);
+  position: relative;
+  border: 2px solid color('primary');
+  border-radius: 15px;
+  min-width: 80px;
+  max-width: 100%;
+  @include transition($duration: 200);
+
+  .button__icon {
+    @include transition($duration: 200);
+  }
+  .button__text {
+    display: none;
+    @include transition($duration: 200);
+  }
+  &:hover,
+  &:focus {
+    background-color: color('primary');
+  }
+  @media (min-width: $xs) {
+    padding: 10px 25px;
+    .button__text {
+      padding-left: 10px;
+      display: inline;
+    }
+  }
+}

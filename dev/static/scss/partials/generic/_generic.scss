@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: color('background');
+}
+
+h1 {
+  @include font($size:$H1, $weight:$BOLD_WEIGHT);
+  @include mobile(em($H1), 1.75, font-size, em);
+}
+h2 {
+  @include font($size:$H2);
+  @include mobile(em($H2), 1.5, font-size, em);
+}
+h3 {
+  @include font($size:$H3);
+  @include mobile(em($H2), 1.5, font-size, em);
+}
+h4 {
+  @include font($size:$H4);
+}
+h5 {
+  @include font($size:$H5);
+}
+h6 {
+  @include font($size:$H6);
+}
+
+a {
+  @include font();
+  @include reset-link();
+}
+
+ul {
+  @include reset-list();
+}
+
+label {
+  @include font($display: inline-block);
+}
+input,
+select {
+  @include reset-button();
+  @include font($display:inline-block, $align:left);
+  @include elem($width:100%, $margin:0, $padding:15px);
+}
+input {
+  &[type="date"] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-calendar-picker-indicator {
+      appearance: none;
+    }
+  }
+  &[type="checkbox"] {
+    @include font($ICON_FONT, 20, $align:center);
+    @include flex();
+    padding: 5px;
+  }
+}
+select {
+  option {
+    appearance: none;
+  }
+}
+
+button {
+  @include font($display:inline-block, $weight:$MEDIUM_WEIGHT);
+  @include reset-button();
+}

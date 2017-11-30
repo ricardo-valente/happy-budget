@@ -1,0 +1,150 @@
+.app__form {
+  .form__fields {
+    .field__wrapper {
+      @extend .col-6;
+      position: relative;
+      padding: 15px 0 0 0;
+
+      .field__input {
+        border: 2px solid color('secondary');
+        border-radius: 10px;
+        max-height: 58px;
+        appearance: none;
+        @include transition($duration: 100);
+
+        &[type="checkbox"] {
+          width: 30px;
+          height: 30px;
+          &:before {
+            @include pseudo($content:'\e900');
+            opacity: 0;
+            @include transition($duration: 100);
+          }
+          &:checked {
+            &:before {
+              opacity: 1;
+            }
+          }
+          &:not(:checked) {
+            &:before {
+              opacity: 0;
+            }
+          }
+        }
+        &:hover,
+        &:focus {
+          border-color: color('primary');
+        }
+        &.js-valid {
+          animation: 2000ms 1 alternate valid-input-field;
+          // border-color: color('true');
+        }
+        &.js-error {
+          border-color: color('false');
+        }
+      }
+      .field__label {
+        padding-left: 15px;
+      }
+      .required {
+        @include elem($width:90%, $margin:0 5%, $padding:10px, $bg-color:#FFFFFF, $opacity:0);
+        @include position($top:65px, $index:-1);
+        border-radius: 5px;
+        box-shadow: 0 0 10px color('secondary');
+        transform: translateY(-25px);
+        transition: 250ms all ease-out;
+        .required__text {
+          color: color('false');
+        }
+        &.js-show {
+          z-index: 2;
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      &.euroticket__field,
+      &.split__field {
+        @include flex($justify:flex-start);
+      }
+      &.date__field,
+      &.name__field {
+        @extend .col-12;
+        padding: 15px 0 0 0;
+      }
+    }
+  }
+
+  .form__buttons {
+    @include position($top:auto, $bottom:35px);
+    width: 100%;
+    padding-left: 15px;
+
+    .button__wrapper {
+      padding: 0;
+      .save {
+        border-color: mix(color('true'), color('primary'), 50%);
+        .button__icon {
+          color: color('true');
+        }
+        &:hover,
+        &:focus {
+          background-color: mix(color('true'), #FFFFFF, 7%);
+          .button__icon {
+            color: mix(color('true'), color('primary'), 80%);
+          }
+          .button__text {
+            color: mix(color('true'), color('primary'), 50%);;
+          }
+        }
+      }
+      .cancel {
+        border-color: mix(color('false'), color('primary'), 50%);;
+        .button__icon {
+          color: color('false');
+        }
+        &:hover,
+        &:focus {
+          background-color: mix(color('false'), #FFFFFF, 7%);
+          .button__icon {
+            color: mix(color('false'), color('primary'), 80%);
+          }
+          .button__text {
+            color: mix(color('false'), color('primary'), 50%);
+          }
+        }
+      }
+      &.cancel__field {
+        margin: 0 15px 0 auto;
+      }
+    }
+  }
+  .form__fields,
+  .form__buttons {
+    .field__wrapper,
+    .button__wrapper {
+      &:nth-of-type(odd) {
+        &:not(.date__field) {
+          padding-right: 7px;
+        }
+      }
+      &:nth-of-type(even) {
+        &:not(.name__field) {
+          padding-left: 7px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $xs) {
+    .form__fields {
+      .field__wrapper {
+        .field__input {
+          &[type="checkbox"] {
+            width: 48px;
+            height: 48px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+/**
+ * Text aligning classes
+ */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+/**
+ * Color classes
+ */
+.color-true {
+  color: color('true');
+}
+.color-false {
+  color: color('false');
+}
+
+/**
+ * Display classes
+ */
+@include classes($displays, display);
+
+/**
+ * Transition classes
+ */
+.transOut-150 {
+  transition: 150ms all ease-out;
+}
+
+/**
+ * Icon classes
+ */
+.close-icon {
+  font-size: 20px
+}
+
+.row {
+  margin: 0;
+}

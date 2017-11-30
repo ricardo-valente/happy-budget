@@ -1,0 +1,60 @@
+/**
+ * Font constants
+ */
+$FONTS_PATH: '../fonts/';
+$MAIN_FONT: 'Poppins', sans-serif;
+$ICON_FONT: 'icomoon';
+$FONT_BASE_SIZE: 16;
+$LIGHT_WEIGHT: 200;
+$MEDIUM_WEIGHT: 500;
+$BOLD_WEIGHT: 700;
+$LINE_HEIGHT: 1.5em;
+$H1: 54;
+$H2: 32;
+$H3: 24;
+$H4: 18;
+$H5: $FONT_BASE_SIZE;
+$H6: 14;
+
+/**
+ * Color Palette
+ */
+$app-colors: (
+  'primary': #4a5566,
+  'secondary': #d7e2f2,
+  'foreground': #191919,
+  'background': #fafafa,
+  'true': #8cffa5,
+  'false': #ff6b6b
+);
+$PRIM_COLOR: color('primary');
+$SEC_COLOR: color('secondary');
+$FORE_COLOR: color('foreground');
+$BACK_COLOR: color('background');
+$TRUE_COLOR: color('true');
+$FALSE_COLOR: color('false');
+
+/**
+ * Images Paths
+ */
+ $IMAGES_PATH: '../images/';
+ $ICONS_PATH: '../images/icons/';
+
+/**
+* Displays
+*/
+$displays:
+  block,
+  inline,
+  inline-block,
+  none;
+
+/**
+* Breakpoints sizes
+*/
+$xs: 321px;
+$sm: 576px;
+$md: 769px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1681px;
