@@ -8,6 +8,7 @@ exports.db = {
   port: process.env.DB_PORT
 }
 
+
 exports.appVars = {
   title: 'Happy Budget',
   author: 'Ricardo Valente',

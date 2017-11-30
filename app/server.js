@@ -34,7 +34,7 @@ var _require = require('pg'),
     Pool = _require.Pool,
     Client = _require.Client;
 
-var dbConnectionStr = 'postgresql://' + _config2.default.db.user + ':' + _config2.default.db.password + '@' + _config2.default.db.host + ':' + _config2.default.db.port + '/' + _config2.default.db.name;
+var dbConnectionStr = 'postgresql://' + _config2.default.db.user + ':' + _config2.default.db.password + '@' + _config2.default.db.host + ':5432/' + _config2.default.db.name;
 
 var app = (0, _express2.default)();
 var port = 5000;

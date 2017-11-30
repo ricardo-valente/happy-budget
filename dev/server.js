@@ -6,7 +6,7 @@ import express from 'express'
 import hbs from 'express-handlebars'
 import helpers from './lib/helpers'
 const { Pool, Client } = require('pg')
-const dbConnectionStr = 'postgresql://' + config.db.user + ':' + config.db.password + '@' + config.db.host + ':' + config.db.port + '/' + config.db.name
+const dbConnectionStr = 'postgresql://' + config.db.user + ':' + config.db.password + '@' + config.db.host + ':5432/' + config.db.name
 
 const app = express()
 const port = 5000
