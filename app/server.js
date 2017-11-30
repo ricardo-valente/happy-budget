@@ -50,21 +50,21 @@ var db = _config2.default.db;
 var pool = new Pool({
   connectionString: _config2.default.databaseUrl
 });
-// pool.query('SELECT NOW()', (err, res) => {
-//   console.log(err, res)
-//   pool.end()
-// })
 var client = new Client({
   connectionString: _config2.default.databaseUrl
 });
 client.connect();
-
-pool.query('SELECT * FROM income WHERE id = $1', [1], function (err, res) {
-  if (err) {
-    throw err;
-  }
-  console.log('user:', res.rows[0]);
+pool.query('SELECT NOW()', function (err, res) {
+  console.log(err, res);
+  pool.end();
 });
+
+// pool.query('SELECT * FROM income WHERE id = $1', [1], (err, res) => {
+//   if (err) {
+//     throw err
+//   }
+//   console.log('user:', res.rows[0])
+// })
 
 app.engine('hbs', hbsOpt.engine);
 app.set('views', _path2.default.join(__dirname, 'views'));

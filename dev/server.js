@@ -23,21 +23,21 @@ const db = config.db
 const pool = new Pool({
   connectionString: config.databaseUrl,
 })
-// pool.query('SELECT NOW()', (err, res) => {
-//   console.log(err, res)
-//   pool.end()
-// })
 const client = new Client({
   connectionString: config.databaseUrl,
 })
 client.connect()
-
-pool.query('SELECT * FROM income WHERE id = $1', [1], (err, res) => {
-  if (err) {
-    throw err
-  }
-  console.log('user:', res.rows[0])
+pool.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  pool.end()
 })
+
+// pool.query('SELECT * FROM income WHERE id = $1', [1], (err, res) => {
+//   if (err) {
+//     throw err
+//   }
+//   console.log('user:', res.rows[0])
+// })
 
 app.engine('hbs', hbsOpt.engine);
 app.set('views', path.join(__dirname, 'views'));
