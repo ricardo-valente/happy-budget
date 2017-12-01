@@ -3,10 +3,9 @@ import http from 'http'
 import fs from 'fs'
 import path from 'path'
 import express from 'express'
+import bodyParser from 'body-parser'
 import hbs from 'express-handlebars'
 import helpers from './lib/helpers'
-const { Pool, Client } = require('pg')
-// const dbConnectionStr = 'postgresql://' + config.db.user + ':' + config.db.password + '@' + config.db.host + ':5432/' + config.db.name
 
 const app = express()
 const port = 5000
@@ -19,26 +18,9 @@ const hbsOpt = hbs.create({
   partialsDir: path.join(__dirname, 'views/partials'),
   helpers: helpers
 })
-const db = config.db
-const pool = new Pool({
-  connectionString: config.databaseUrl,
-})
-const client = new Client({
-  connectionString: config.databaseUrl,
-})
-client.connect()
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
-})
 
-// pool.query('SELECT * FROM income WHERE id = $1', [1], (err, res) => {
-//   if (err) {
-//     throw err
-//   }
-//   console.log('user:', res.rows[0])
-// })
-
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.engine('hbs', hbsOpt.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

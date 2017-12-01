@@ -13,11 +13,36 @@
     </section>
   {{/if}}
 {{/if}}
+
 <ul class="incomes__list">
-  <li class="incomes__item">
-    <h4 class="incomes__title"></h4>
-    <h5 class="incomes__date"></h5>
-    <h5 class="incomes__value"></h5>
-    <button class="button edit-income" type="button" name="button">Edit Income</button>
-  </li>
+  {{# each incomes }}
+    <li class="row income__item">
+      <div class="col-6">
+        <h4 class=".income__name">{{ this.name }}</h4>
+      </div>
+      <div class="col-6">
+        <h4 class=".income__amount">{{ this.amount }}€</h4>
+      </div>
+      <div class="col-3">
+        <h5 class=".income__date">{{ this.income_date }}</h5>
+      </div>
+      <div class="col-3">
+        <h5 class=".income__type">{{ this.type }}</h5>
+      </div>
+      <div class="col-2">
+        <h5 class=".income__who">{{ this.who }}</h5>
+      </div>
+      <div class=col-2>
+        <h5 class=".income__category">{{ this.category }}</h5>
+      </div>
+      <div class="col-1">
+        <h5 class=".income__euroticket">{{ this.euroticket }}</h5>
+      </div>
+      <div class="col-1">
+        <h5 class=".income__split">{{ this.split }}</h5>
+      </div>
+      <button class="button edit-income" name="edit">Edit Income</button>
+      <button class="button delete-income" name="delete" data-id="{{ this.id }}">Delete Income</button>
+    </li>
+  {{/each}}
 </ul>

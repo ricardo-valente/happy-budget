@@ -15,8 +15,9 @@
               <h6 class="required__text">No amount</h6>
             </span>
           {{ else }}
-            <input class="field__input {{ lowify @key }}__input" type="{{ ../this.type  }}" name="{{ lowify @key }}" placeholder="{{ @key }}" {{#ifNotEqual ../this.type 'checkbox' }}required{{/ifNotEqual}}>
+            <input class="field__input {{ lowify @key }}__input" type="{{ ../this.type  }}" name="{{ lowify @key }}" placeholder="{{ @key }}" {{#ifNotEqual ../this.type 'checkbox' }}required{{ else }}value="1"{{/ifNotEqual }}>
             {{#ifEqual ../this.type 'checkbox' }}
+              <input type="hidden" name="{{ lowify @key }}" value="0" />
               <label class="field__label">{{ @key }}</label>
             {{/ifEqual }}
           {{/ifEqual }}

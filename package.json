@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "bootstrap-4-grid": "^2.1.0",
     "convict": "^4.0.1",
     "dotenv": "^4.0.0",

@@ -1,13 +1,10 @@
 const dotenv = require('dotenv').config()
 
-exports.db = {
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  name: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT
-}
 exports.databaseUrl = process.env.DATABASE_URL
+exports.queries = {
+  all: 'SELECT * FROM incomes',
+  insert: 'INSERT INTO incomes(income_date, name, type, who, amount, category, euroticket, split) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)'
+}
 
 exports.appVars = {
   title: 'Happy Budget',
@@ -28,7 +25,7 @@ exports.appVars = {
       'type': 'select',
       'options': ['Amora', 'Amoro']
     },
-    'Value': {
+    'Amount': {
       'type': 'number'
     },
     'Category': {
